@@ -42,3 +42,27 @@
     padding: 6px;
     margin-top: 40px ;
 }
+
+@media screen and (max-width: 440px){
+    .container{
+        height: 400px;
+        width: 400px;
+        margin-left: 0%;
+        position: fixed;
+    }
+    
+    .profilebox{
+        width: 500px;
+        margin-left: 0%;
+        margin-right: 12%;
+        position: fixed;
+        bottom: 1px;
+        
+    }
+    .home{
+        width: 25px;
+        position: absolute;
+        left: -2%;
+
+    }
+}
