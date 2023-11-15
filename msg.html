@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="msg.css">
+</head>
+
+<body>
+    <div id="main">
+        <div class="nav">
+            <div class="logo">
+            <a href="index.html"><img src="20230920_201905_0000-removebg-preview11.png"></a>
+                <p>"Welness in your pocket"</p>
+            </div>
+            <div class="options">
+                <h3><a href="index.html" style="text-decoration: none;">HOME</a></h3>
+                <H3><a href="donate.html" style="text-decoration: none;">DONATE BLOODS </a></H3>
+                <h3><a href="index.html" style="text-decoration: none;">OUR SERVICE</a></h3>
+                <h3>ABOUT US</h3>
+            </div>
+            <div class="sign">
+                <button class="assign">user</button>
+            </div>
+        </div>
+        <h3>TYPE :<span class="typo">APPOINTMENT</span></h3>
+        <div style="height: 100px;"></div>
+        <h3>TYPE :<span class="typo" style="color: red;">APPOINTMENT</span></h3>
+        <form id="frm">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="edit" for="inputEmail4">Doctors name:</label>
+                    <input class="form-control name1" id="inputEmail45" placeholder="Doctors's Name" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="edit" for="inputPassword4">appointment date</label>
+                    <input type="tel" class="form-control con1" id="inputPassword45" placeholder="Contact No" readonly>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="edit" for="inputEmail4">Patient's Name</label>
+                    <input class="form-control name1" id="inputEmail4" placeholder="Patient's Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="edit" for="inputPassword4">Contact No.</label>
+                    <input type="tel" class="form-control con1" id="inputPassword4" placeholder="Contact No">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="edit" for="inputAddress">Address</label>
+                <input type="text" class="form-control ad1" id="inputAddress" placeholder="1234 Main St">
+            </div>
+            <div class="form-group col-md-2">
+                <label class="edit" for="inputZip">Description</label>
+                <input type="text" class="form-control des1" id="exampleFormControlTextarea1" placeholder="Description about patient">
+            </div>
+    </div>
+    <button type="button" class="btn btn-primary" onclick="sendm()">Book Now !!</button>
+    </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+    <script>
+        const usr = localStorage.getItem('user-name');
+        let as = document.querySelector(".assign");
+        as.innerText=usr;
+        const datadate = localStorage.getItem('datedoc');
+        const nammdoc = localStorage.getItem('docnam');
+        const wlist=localStorage.getItem('wait');
+        const cas = localStorage.getItem('case1');
+        const cas2 = localStorage.getItem('case2');
+        today=new Date();
+        tmi=today.getHours();
+        w=Math.floor(wlist*15/60)
+        console.log(Math.floor((tmi*60)/10));
+        console.log(cas2);
+        console.log(cas);
+        console.log(w);
+        let nxt=(today.getHours()+w);
+        console.log(nxt+":"+today.getMinutes());
+        console.log(datadate);
+        console.log(nammdoc);
+        let cs=document.querySelector('.typo');
+        let doccn=document.querySelector("#inputEmail45");
+        let apnd=document.querySelector("#inputPassword45");
+        let as1 = document.querySelector(".assign");
+        let nm = document.querySelector(".name1");
+        let con = document.querySelector(".con1");
+        let adr = document.querySelector(".ad1");
+        let dec = document.querySelector(".des1");
+        doccn.placeholder=nammdoc;
+        apnd.placeholder=datadate;
+        cs.innerText=cas;
+        function sendm() {
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                // Username: "rumedic22@gmail.com",
+                // Password: "7DA09DD2A0367B1BC394538D04CFCEC873F1",
+                Username: "pratiktulo42@gmail.com",
+                Password: "3CA0EFC67B4B2FE4169A81F27401E6E5437B",
+                To: 'pratiktulo96@gmail.com',
+                // From: "rumedic22@gmail.com",
+                From: "pratiktulo42@gmail.com",
+                Subject: "RU-Medic Patient detail",
+                Body: `Sender-mail: ${as1.innerText},
+                Doctor name:${nammdoc};
+                Date of appointment:${datadate};
+                Time of appointment: Estimated:${nxt}:${today.getMinutes()};
+                Name: ${nm.value}, 
+                Contact:${con.value}, 
+                Address:${adr.value}, 
+                Description:${dec.value}`
+            }).then(
+                function (message){
+                    if(message=='OK'){
+                        alert("Booking done successfully")
+                    }else{
+                        alert("Error sending the booking")
+                    }
+                }
+            );
+        }
+        if(cas2.includes("emergency")){
+            console.log("yes")
+            cs.style.innerText="EMERGENCY";
+        }
+    </script>
+</body>
+
+</html>

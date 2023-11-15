@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>complain form</title>
+    <link rel=" stylesheet" href="complain.css" </head>
+
+<body>
+    <div class="container">
+    <div class="form">
+        <h2>-COMPLAINT FORM-</h2>
+        <br>
+        <form action="">
+            <label>Full name :</label>
+            <input type="text" placeholder="enter fullname" required class="fulname">
+            <br>
+            <label>Phone number :</label>
+            <input type="text" placeholder="enter mobile number" required class="number">
+            <br>
+            <label>Hostel :</label>
+            <input type="text" placeholder="hostel name" required class="hostel">
+            <br>
+            <label>Room number :</label>
+            <input type="text" placeholder="enter room number" required class="roomno">
+            <br>
+            <label>Hostel incharge :</label>
+            <input type="text" placeholder="enter name" required class="incharge">
+            <br>
+            <label >Problem :</label>
+            <div class="choose" class="prob">
+                <label for="e">Electrical </label>
+                <input type="checkbox" name="elect" id="e">
+                <label for="T">Toilet</label>
+                <input type="checkbox" name="toilet" id="T">
+                <label for="O">Other</label>
+                <input type="checkbox" name="other" id="O">
+            </div>
+            <label for="reason">Issue :</label>
+            <br>
+            <textarea name="reason" id="reason" cols="30" rows="10" placeholder="Write your problem here..." class="reas"></textarea>
+            <center>
+                <input type="button" value="SUBMIT" id="submit" onclick="sendm()">
+            </center>
+        </form>
+
+
+    </div>
+    </div>
+<script src="complain.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+    let name = document.querySelector(".fulname");
+    let num = document.querySelector(".number");
+    let hos = document.querySelector(".hostel");
+    let room = document.querySelector(".roomno");
+    let inc = document.querySelector(".incharge");
+    // let prob = document.querySelector(".prob");
+    let res = document.querySelector(".reas");
+    function sendm() {
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                // Username: "rumedic22@gmail.com",
+                // Password: "7DA09DD2A0367B1BC394538D04CFCEC873F1",
+                Username: "pratiktulo42@gmail.com",
+                Password: "3CA0EFC67B4B2FE4169A81F27401E6E5437B",
+                To: 'pratiktulo96@gmail.com',
+                // From: "rumedic22@gmail.com",
+                From: "pratiktulo42@gmail.com",
+                Subject: "MAITAINANCE FORM",
+                Body: `Sender-name: ${name.innerText},
+                hostel name:${hos.innerText};
+                room: ${room.value},
+                hostel-incharge:${inc.value}; 
+                Contact:${num.innerText}, 
+                problem:${res.value}` 
+                // Description:${res.innerText}`
+            }).then(
+                function (message){
+                    if(message=='OK'){
+                        alert("Booking done successfully")
+                    }else{
+                        alert("Error sending the booking")
+                    }
+                }
+            );
+        }
+</script>
+</body>
+
+</html>

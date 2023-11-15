@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consult</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="main">
+        <div class="selection">
+            <h3>select your subject</h3>
+            <select name="type">
+                <option value="Physics">Physics</option>
+                <option value="BEEE">BEEE</option>
+                <option value="Chemestry">Chemestry</option>
+                <option value="Math">Math</option>
+                <option value="PPS">PPS</option>
+                <option value="EME">EME</option>
+                <option value="HVPE">HVPE</option>
+            </select>
+            <button class="button">APPLY</button>
+        </div>
+        <div id="teachers"></div>
+    </div>
+    <script type="module">
+        let thr = document.querySelector("#teachers");
+        let sel = document.querySelector("select");
+        let btn = document.querySelector(".button")
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBSW_SILWdE_0ziAA47el7YEILFWjtns1o",
+            authDomain: "ru-medic.firebaseapp.com",
+            databaseURL: "https://ru-medic-default-rtdb.firebaseio.com",
+            projectId: "ru-medic",
+            storageBucket: "ru-medic.appspot.com",
+            messagingSenderId: "749329210449",
+            appId: "1:749329210449:web:53a283fbd2c945cc01ec70",
+            measurementId: "G-PTXPJK4NDQ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        import { getDatabase, ref, get, set, child, update, remove }
+            from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+        const db = getDatabase();
+        const dberef = ref(db);
+
+        btn.addEventListener("click", function () {
+            thr.innerHTML="";
+            if (sel.value == "Physics") {
+                get(child(dberef, "physics")).then((snpshot) => {
+                    snpshot.forEach(function (item) {
+                        thr.innerHTML += `<div class="trs">Teacher: ${item.val()}<button>ASK DOUBT</button></div>`;
+                    })
+                })
+            }
+            else if (sel.value == "Chemestry") {
+                get(child(dberef, "chemestry")).then((snpshot) => {
+                    snpshot.forEach(function (item) {
+                        thr.innerHTML += `<div class="trs">Teacher: ${item.val()}<button>ASK DOUBT</button></div>`;
+                    })
+                })
+            }
+            else if (sel.value == "BEEE") {
+                get(child(dberef, "chemestry")).then((snpshot) => {
+                    snpshot.forEach(function (item) {
+                        thr.innerHTML += `<div class="trs">Teacher: ${item.val()}<button>ASK DOUBT</button></div>`;
+                    })
+                })
+            }
+            else if (sel.value == "Math") {
+                get(child(dberef, "chemestry")).then((snpshot) => {
+                    snpshot.forEach(function (item) {
+                        thr.innerHTML += `<div class="trs">Teacher: ${item.val()}<button>ASK DOUBT</button></div>`;
+                    })
+                })
+            }
+            else if (sel.value == "HVPE") {
+                get(child(dberef, "chemestry")).then((snpshot) => {
+                    snpshot.forEach(function (item) {
+                        thr.innerHTML += `<div class="trs">Teacher: ${item.val()}<button>ASK DOUBT</button></div>`;
+                    })
+                })
+            }
+            else if (sel.value == "EME") {
+                get(child(dberef, "chemestry")).then((snpshot) => {
+                    snpshot.forEach(function (item) {
+                        thr.innerHTML += `<div class="trs">Teacher: ${item.val()}<button>ASK DOUBT</button></div>`;
+                    })
+                })
+            }
+            else if (sel.value == "PPS") {
+                get(child(dberef, "chemestry")).then((snpshot) => {
+                    snpshot.forEach(function (item) {
+                        thr.innerHTML += `<div class="trs">Teacher: ${item.val()}<button>ASK DOUBT</button></div>`;
+                    })
+                })
+            }
+
+        })
+    </script>
+</body>
+
+</html>
