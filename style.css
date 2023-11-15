@@ -309,6 +309,24 @@ body {
     height: 20%;
     background-color: #fae6b3
 }
+.lft2{
+    width: 50%;
+    height: 100%;
+    background-color: #130074;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #efd9f2;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+}
+.lft2 button{
+    margin-bottom: 10px;
+    border-radius: 20px;
+    width: 50%;
+    height: 20%;
+    background-color: #fae6b3
+}
 
 .rth1 {
     width: 50%;
@@ -389,26 +407,27 @@ body {
 
     .inside-fir {
         flex-direction: column;
-        gap: 30px;
+        gap: 20px;
+        margin-top: -70px;
     }
 
     .inside-fir .fut {
-        height: 50%;
-        width: 100%;
+        height: 55%;
+        width: 115%;
     }
 
     .inside-fir .pre {
-        height: 50%;
-        width: 100%;
+        height: 55%;
+        width: 115%;
     }
 
     .card {
-        height: 100%;
-        width: 60%;
+        height:100%;
+        width: 70%;
     }
 
     .card .para {
-        height: 50%;
+        height: 45%;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -419,11 +438,14 @@ body {
     }
 
     #second-p h1 {
-        width: 50%;
+        width: 60%;
         text-align: center;
         /* background-color: #d12600; */
         font-size: 20px;
         margin-left: 0;
+    }
+    .lft1 p{
+        margin-top: 18px;   
     }
     #third-p,#fourth-p {
         justify-content: center;
@@ -448,17 +470,23 @@ body {
 
     .lft1 {
         width: 100%;
-        height: 50%;
     }
 
     .lft1 p {
-        font-size: 1.05rem;
+        font-size: 0.99rem;
+        margin-top: -5px;
     }
 
     .rth1 {
         width: 100%;
         height: 50%;
         background-color: darkgreen;
+    }
+    .lft2 {
+        width: 100%;
+    }
+    .lft2 p {
+        font-size: small;
     }
 }
 
