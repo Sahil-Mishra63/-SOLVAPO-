@@ -58,34 +58,7 @@
     let inc = document.querySelector(".incharge");
     // let prob = document.querySelector(".prob");
     let res = document.querySelector(".reas");
-    function sendm() {
-            Email.send({
-                Host: "smtp.elasticemail.com",
-                // Username: "rumedic22@gmail.com",
-                // Password: "7DA09DD2A0367B1BC394538D04CFCEC873F1",
-                Username: "pratiktulo42@gmail.com",
-                Password: "3CA0EFC67B4B2FE4169A81F27401E6E5437B",
-                To: 'pratiktulo96@gmail.com',
-                // From: "rumedic22@gmail.com",
-                From: "pratiktulo42@gmail.com",
-                Subject: "MAITAINANCE FORM",
-                Body: `Sender-name: ${name.innerText},
-                hostel name:${hos.innerText};
-                room: ${room.value},
-                hostel-incharge:${inc.value}; 
-                Contact:${num.innerText}, 
-                problem:${res.value}` 
-                // Description:${res.innerText}`
-            }).then(
-                function (message){
-                    if(message=='OK'){
-                        alert("Booking done successfully")
-                    }else{
-                        alert("Error sending the booking")
-                    }
-                }
-            );
-        }
+    
 </script>
 </body>
 
